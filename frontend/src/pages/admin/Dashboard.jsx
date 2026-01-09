@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { Plus, BarChart3, Users, Calendar, ArrowRight } from 'lucide-react';
 import { format } from 'date-fns';
 
@@ -74,7 +74,7 @@ export default function AdminDashboard() {
                                 <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 h-full flex flex-col">
                                     <div className="flex justify-between items-start mb-4">
                                         <span className={`px-2 py-1 rounded text-xs font-medium ${election.status === 'active' ? 'bg-green-500/20 text-green-400' :
-                                                election.status === 'ended' ? 'bg-gray-700 text-gray-400' : 'bg-yellow-500/20 text-yellow-500'
+                                            election.status === 'ended' ? 'bg-gray-700 text-gray-400' : 'bg-yellow-500/20 text-yellow-500'
                                             }`}>
                                             {election.status.toUpperCase()}
                                         </span>
