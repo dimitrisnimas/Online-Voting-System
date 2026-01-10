@@ -20,7 +20,8 @@ export default function PublicVote() {
 
     const fetchElection = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/api/public/elections/${slug}`);
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+            const res = await fetch(`${API_URL}/api/public/elections/${slug}`);
             if (!res.ok) throw new Error('Election not found or inactive');
             const data = await res.json();
             setElection(data);
@@ -71,7 +72,8 @@ export default function PublicVote() {
 
         try {
             setLoading(true);
-            const res = await fetch('http://localhost:3000/api/public/vote', {
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+            const res = await fetch(`${API_URL}/api/public/vote`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
