@@ -22,14 +22,15 @@ export default function ElectionDetails() {
         setLoading(true);
         try {
             // Fetch Election Details
-            const resElection = await fetch(`http://localhost:3000/api/elections/${id}`, {
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+            const resElection = await fetch(`${API_URL}/api/elections/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const dataElection = await resElection.json();
             setElection(dataElection);
 
             // Fetch Voters
-            const resVoters = await fetch(`http://localhost:3000/api/elections/${id}/voters`, {
+            const resVoters = await fetch(`${API_URL}/api/elections/${id}/voters`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const dataVoters = await resVoters.json();
@@ -54,7 +55,8 @@ export default function ElectionDetails() {
         }).filter(v => v.email); // Basic filter
 
         try {
-            const res = await fetch(`http://localhost:3000/api/elections/${id}/voters`, {
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+            const res = await fetch(`${API_URL}/api/elections/${id}/voters`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
