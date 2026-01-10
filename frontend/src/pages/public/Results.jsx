@@ -22,8 +22,9 @@ export default function PublicResults() {
 
     const fetchData = async () => {
         try {
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
             // Fetch info
-            const resElection = await fetch(`http://localhost:3000/api/public/elections/${slug}`);
+            const resElection = await fetch(`${API_URL}/api/public/elections/${slug}`);
             const dataElection = await resElection.json();
 
             if (resElection.status === 403) {
@@ -37,7 +38,7 @@ export default function PublicResults() {
             }
             // Actually, let's fetch stats directly and see.
 
-            const resStats = await fetch(`http://localhost:3000/api/public/elections/${slug}/stats`);
+            const resStats = await fetch(`${API_URL}/api/public/elections/${slug}/stats`);
             if (resStats.status === 403) {
                 setError('Results are not yet available. Please check back after the election ends.');
                 setLoading(false);
