@@ -13,13 +13,13 @@ const fastify = Fastify({
 
 // Register Plugins
 await fastify.register(cors, {
-    origin: process.env.FRONTEND_URL || '*',
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 });
 
 await fastify.register(fastifySocketIO, {
     cors: {
-        origin: process.env.FRONTEND_URL || '*',
+        origin: '*',
     }
 });
 
